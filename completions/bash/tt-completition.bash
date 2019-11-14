@@ -1,5 +1,8 @@
 #/usr/bin/env bash
-TT_DB=~/switchdrive/todo/timetrap.db
+# should really consider using the config file and getting the DB from there
+LINE=$(grep database_file ~/.timetrap.yml 2>/dev/null || echo "database-file: ~/.timetrap.db")
+
+TT_DB=$(echo $LINE | cut -d' ' -f2)
 
 _tt_completions()
 {
